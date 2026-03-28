@@ -165,13 +165,29 @@ Before marking your PR as ready, verify:
 
 ### 5. After Your PR Is Merged
 
-Switch back to `main` and pull the latest changes. Delete your old branch to keep things tidy:
+Switch back to `main`, pull the latest changes, and **delete your branch both locally and on GitHub**:
 
 ```bash
 git checkout main
 git pull origin main
+
+# Delete the local branch
 git branch -d <your-branch-name>
+
+# Delete the branch on GitHub (required — otherwise it stays visible on the remote)
+git push origin --delete <your-branch-name>
 ```
+
+> **Why do deleted branches still show up on GitHub?**
+> `git branch -d` only removes the **local** branch. The branch on GitHub is a separate copy — you must explicitly delete it with `git push origin --delete <branch>`. If you skip this step, stale branches pile up on the remote repo.
+>
+> **If the branch was already deleted on GitHub** (e.g., via the "Delete branch" button after merging the PR), clean up your local stale references with:
+>
+> ```bash
+> git fetch --prune
+> ```
+>
+> **Tip for repo admins:** Enable **Settings → General → Pull Requests → "Automatically delete head branches"** on GitHub so merged branches are removed automatically.
 
 ### Quick Reference
 
