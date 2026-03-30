@@ -714,6 +714,8 @@ ol {
     width: 16px;
     height: 16px;
     color: var(--text-secondary);
+    border: none;
+    margin: 0;
 }
 
 .code-body {
