@@ -37,6 +37,7 @@ Branch naming conventions:
 | `blog/`     | Adding or editing a blog post      | `blog/intro-to-ml-post`            |
 | `docs/`     | Updating documentation             | `docs/update-readme`               |
 | `refactor/` | Restructuring without new features | `refactor/css-variables`           |
+| `l10n/`     | Translating a page to a new locale | `l10n/vi/blog/4.introduction`      |
 
 > **Why branches?** They isolate your work so a half-finished change never breaks the live site. They also make code review possible — your teammates can see exactly what changed.
 
@@ -212,7 +213,14 @@ ftulabs.github.io/
 │   └── style.css           # Global stylesheet (theme, layout, scrollbar, copy button, hljs overrides)
 ├── js/
 │   ├── main.js             # Navigation toggle & scroll reveal animations
-│   └── hljs.js             # Highlight.js loader + copy button injection
+│   ├── hljs.js             # Highlight.js loader + copy button injection
+│   └── l10n.js             # Language switcher, auto-detection & URL routing
+├── l10n/
+│   └── manifest.json       # Maps pages to available translations
+├── vi/                     # Vietnamese translations (mirrors root structure)
+│   └── blog/
+│       ├── 4.introduction.html
+│       └── post-template.html
 ├── img/
 │   ├── logo.png            # Site logo
 │   └── copy.svg            # Copy icon source (inlined in hljs.js)
@@ -431,6 +439,92 @@ Supported formats: `.mp3`, `.ogg`, `.wav`. For podcast-style content, consider h
 - **File size:** Keep the repo lean. Avoid committing files larger than 10 MB. Use external hosting (YouTube, Vimeo, cloud storage) for large media.
 - **Alt text:** Always include descriptive `alt` attributes on `<img>` tags for accessibility.
 - **Responsive:** Images and videos use `max-width: 100%` by default and scale to fit their container.
+
+## Localization (l10n)
+
+The site supports multiple languages. English (`en`) is the default; translated pages live under a language prefix directory (e.g. `vi/` for Vietnamese). A language switcher with SVG flags appears in the navigation bar on every page.
+
+### How It Works
+
+| Concept | Details |
+| --- | --- |
+| **Default language** | English — pages at the root (`blog/4.introduction.html`) |
+| **Translated pages** | Mirrored under a language prefix (`vi/blog/4.introduction.html`) |
+| **Manifest** | `l10n/manifest.json` — maps each base path to its available languages |
+| **Switcher JS** | `js/l10n.js` — reads the manifest, builds a dropdown with flag buttons, handles auto-detection |
+| **Auto-detection** | On first visit the browser's `navigator.language` is checked. If a translation exists for that language, the user is redirected automatically. The choice is stored in `localStorage` (`ftu-lang`). |
+| **Greyed-out languages** | If the current page has no translation for a language, that option is visually disabled (`opacity: 0.3`, `pointer-events: none`). |
+
+### Translate an Existing Page
+
+1. **Create a branch** following the naming convention:
+
+   ```bash
+   git checkout -b l10n/vi/blog/4.introduction
+   ```
+
+   The branch name is `l10n/[lang]/[path]` — the language code followed by the page path (without `.html`).
+
+2. **Copy the English page** into the language directory, mirroring the path:
+
+   ```bash
+   mkdir -p vi/blog
+   cp blog/4.introduction.html vi/blog/4.introduction.html
+   ```
+
+3. **Edit the translated file:**
+   - Change `<html lang="en">` to `<html lang="vi">` (or the appropriate BCP-47 tag).
+   - **Adjust relative paths** — the file is one level deeper, so `../` becomes `../../`:
+     ```
+     ../css/style.css   →  ../../css/style.css
+     ../js/main.js      →  ../../js/main.js
+     ../js/l10n.js      →  ../../js/l10n.js
+     ../img/logo.png    →  ../../img/logo.png
+     ../blog.html       →  ../../blog.html
+     ```
+   - Translate all user-facing text (title, headings, paragraphs, lists, blockquotes).
+   - **Do NOT translate** code blocks, terminal commands, URLs, or technical terms commonly used in English (e.g. Git, commit, branch, IDE, CUDA).
+   - Keep the same HTML structure — same classes, IDs, and nesting.
+
+4. **Register the translation** in `l10n/manifest.json`:
+
+   ```json
+   {
+     "blog/4.introduction.html": ["en", "vi"],
+     "blog/post-template.html": ["en", "vi"]
+   }
+   ```
+
+   The key is the **base path** (English URL without a leading `/`). The value is an array of available language codes.
+
+5. **Commit, push, and open a PR** as usual:
+
+   ```bash
+   git add vi/blog/4.introduction.html l10n/manifest.json
+   git commit -m "l10n: Add Vietnamese translation for blog/4.introduction"
+   git push origin l10n/vi/blog/4.introduction
+   gh pr create --title "l10n: Vietnamese translation of Survival Guide"
+   ```
+
+### Add a New Language
+
+To add a new language (e.g. Japanese `ja`):
+
+1. Register the language in `js/l10n.js`:
+   - Add an entry to the `LANGUAGES` array with `code`, `label`, and `flag` SVG.
+
+2. Create the directory structure: `ja/blog/`, `ja/` etc.
+
+3. Translate pages and update `l10n/manifest.json` as described above.
+
+### Currently Translated Pages
+
+| Page | Languages |
+| --- | --- |
+| `blog/4.introduction.html` | English, Vietnamese |
+| `blog/post-template.html` | English, Vietnamese |
+
+All other pages show the language switcher but Vietnamese is greyed out (disabled) until a translation is added.
 
 ## Theme
 
