@@ -636,9 +636,43 @@ ol {
     border: 1px solid var(--border);
     padding: 1.25rem;
     overflow-x: auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     font-size: 0.8125rem;
     line-height: 1.65;
+    scrollbar-width: none;
+}
+
+.post-content pre:hover {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+/* Webkit scrollbar (Chrome, Safari, Edge) */
+.post-content pre::-webkit-scrollbar {
+    height: 6px;
+    background: transparent;
+}
+
+.post-content pre::-webkit-scrollbar-track,
+.post-content pre::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.post-content pre::-webkit-scrollbar-button {
+    display: none;
+}
+
+.post-content pre::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 3px;
+}
+
+.post-content pre:hover::-webkit-scrollbar-thumb {
+    background: var(--accent);
+}
+
+.post-content pre:hover::-webkit-scrollbar-thumb:active {
+    background: var(--accent-hover);
 }
 
 .post-content pre code {
@@ -659,6 +693,21 @@ ol {
     margin: 1.5rem 0;
     color: var(--text-secondary);
     font-style: italic;
+}
+
+.post-content figure {
+    margin: 1.5rem 0 2rem;
+}
+
+.post-content figure img {
+    margin-bottom: 0;
+}
+
+.post-content figcaption {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    margin-top: 0.5rem;
 }
 
 .post-content img {
