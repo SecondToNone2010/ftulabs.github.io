@@ -1,7 +1,6 @@
 (function () {
-  var CDN = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/";
-  var queue = [
-    "highlight.min.js",
+  var CDN = "../vendor/hljs/";
+  var LANGUAGES = [
     "languages/latex.min.js",
     "languages/dockerfile.min.js",
     "languages/ini.min.js",
@@ -44,17 +43,26 @@
     }
   }
 
-  (function load(i) {
-    if (i >= queue.length) {
+  function loadScript(url) {
+    return new Promise(function (resolve) {
+      var s = document.createElement("script");
+      s.src = url;
+      s.onload = s.onerror = resolve;
+      document.head.appendChild(s);
+    });
+  }
+
+  // Load highlight.min.js first (languages depend on it), then all languages in parallel
+  loadScript(CDN + "highlight.min.js")
+    .then(function () {
+      return Promise.all(
+        LANGUAGES.map(function (lang) {
+          return loadScript(CDN + lang);
+        }),
+      );
+    })
+    .then(function () {
       hljs.highlightAll();
       addCopyButtons();
-      return;
-    }
-    var s = document.createElement("script");
-    s.src = CDN + queue[i];
-    s.onload = s.onerror = function () {
-      load(i + 1);
-    };
-    document.head.appendChild(s);
-  })(0);
+    });
 })();
