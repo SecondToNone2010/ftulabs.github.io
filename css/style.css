@@ -634,56 +634,23 @@ ol {
 .post-content pre {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    padding: 1.25rem;
-    padding-bottom: 1rem;
+    padding: 0;
     overflow-x: auto;
     margin-bottom: 0.75rem;
     font-size: 0.8125rem;
     line-height: 1.65;
     position: relative;
     scrollbar-width: thin;
-    scrollbar-color: var(--accent-dim) transparent;
-}
-
-.post-content pre:hover {
     scrollbar-color: var(--accent) transparent;
 }
 
-.post-content pre:active {
+.post-content pre:hover {
     scrollbar-color: var(--accent-hover) transparent;
 }
 
-/* Webkit scrollbar (Chrome, Safari, Edge) */
-.post-content pre::-webkit-scrollbar {
-    height: 2px;
-}
-
-.post-content pre::-webkit-scrollbar-track,
-.post-content pre::-webkit-scrollbar-corner {
-    background: transparent;
-}
-
-.post-content pre::-webkit-scrollbar-button {
-    display: none;
-    width: 0;
-    height: 0;
-}
-
-.post-content pre::-webkit-scrollbar-thumb {
-    background: var(--accent-dim);
-    border-radius: 2px;
-}
-
-.post-content pre:hover::-webkit-scrollbar-thumb {
-    background: var(--accent);
-}
-
-.post-content pre::-webkit-scrollbar-thumb:active {
-    background: var(--accent-hover);
-}
-
 .post-content pre code {
-    padding: 0;
+    display: block;
+    padding: 1.25rem;
     background: none;
     border: none;
     color: var(--text);
@@ -691,7 +658,7 @@ ol {
 
 .post-content pre code.hljs {
     background: transparent;
-    padding: 0;
+    padding: 1.25rem;
 }
 
 /* Copy button */
