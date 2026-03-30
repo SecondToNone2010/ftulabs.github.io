@@ -1,22 +1,19 @@
 (function () {
-  var base = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/";
-  var langs = ["latex", "dockerfile", "toml", "ini"];
-  var loaded = 0;
+  var CDN = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/";
+  var queue = [
+    "highlight.min.js",
+    "languages/latex.min.js",
+    "languages/dockerfile.min.js",
+    "languages/ini.min.js",
+  ];
 
-  function init() {
-    if (++loaded > langs.length) hljs.highlightAll();
-  }
-
-  function addScript(src, cb) {
+  (function load(i) {
+    if (i >= queue.length) return hljs.highlightAll();
     var s = document.createElement("script");
-    s.src = src;
-    s.onload = cb;
+    s.src = CDN + queue[i];
+    s.onload = s.onerror = function () {
+      load(i + 1);
+    };
     document.head.appendChild(s);
-  }
-
-  addScript(base + "highlight.min.js", function () {
-    langs.forEach(function (l) {
-      addScript(base + "languages/" + l + ".min.js", init);
-    });
-  });
+  })(0);
 })();
