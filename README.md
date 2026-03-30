@@ -246,11 +246,12 @@ Blog posts use [Highlight.js](https://highlightjs.org/) (loaded via CDN) for aut
 
 #### Setup (in each blog post that uses code blocks)
 
-Add the Highlight.js stylesheet in `<head>`, after `style.css`:
+Add the Highlight.js theme in `<head>`, **before** `style.css` (so the site's overrides win):
 
 ```html
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css">
+<link rel="stylesheet" href="../css/style.css">
 ```
 
 Add the loader script before `</body>`, after `main.js`:
@@ -259,9 +260,9 @@ Add the loader script before `</body>`, after `main.js`:
 <script src="../js/hljs.js"></script>
 ```
 
-That single script (`js/hljs.js`) fetches the Highlight.js core from the CDN, loads the extra language modules (LaTeX, Dockerfile, TOML, INI), and calls `hljs.highlightAll()` automatically. The background override lives in the global `css/style.css`, so no inline styles are needed.
+The theme (`atom-one-dark`) provides the standard syntax colors. The site's `css/style.css` loads after it and overrides only the code block background to match the site theme. The script (`js/hljs.js`) fetches the Highlight.js core from the CDN, loads the extra language modules (LaTeX, Dockerfile, INI), and calls `hljs.highlightAll()` automatically.
 
-> **Note:** The default Highlight.js build covers ~40 common languages (bash, python, javascript, json, yaml, css, markdown, etc.) but does not include LaTeX, Dockerfile, TOML, or INI — those are bundled by `hljs.js`. To add more languages, edit the `langs` array in `js/hljs.js` (see the [full language list](https://highlightjs.org/download)).
+> **Note:** The default Highlight.js build covers ~40 common languages (bash, python, javascript, json, yaml, css, markdown, etc.) but does not include LaTeX, Dockerfile, or INI — those are bundled by `hljs.js`. To add more languages, edit the `queue` array in `js/hljs.js` (see the [full language list](https://highlightjs.org/download)).
 
 #### Writing code blocks
 
@@ -276,7 +277,6 @@ Use `<pre><code class="language-xxx">` where `xxx` is the language identifier �
 | `` ```json ``       | `<pre><code class="language-json">`               |
 | `` ```latex ``      | `<pre><code class="language-latex">`              |
 | `` ```dockerfile `` | `<pre><code class="language-dockerfile">`         |
-| `` ```toml ``       | `<pre><code class="language-toml">`               |
 | `` ```ini ``        | `<pre><code class="language-ini">`                |
 | `` ```html ``       | `<pre><code class="language-html">`               |
 | `` ```css ``        | `<pre><code class="language-css">`                |
