@@ -693,7 +693,8 @@ ol {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0 0.75rem;
+    height: 1.5rem;
     background: var(--bg-card);
     border-bottom: 1px solid var(--border);
 }
@@ -762,11 +763,11 @@ ol {
 /* Copy button */
 .copy-btn {
     position: relative;
-    width: 2rem;
-    height: 2rem;
-    padding: 0.4rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0.2rem;
     border: 1px solid var(--border);
-    border-radius: 0.375rem;
+    border-radius: 0.2rem;
     background: var(--bg);
     color: var(--text-muted);
     cursor: pointer;
