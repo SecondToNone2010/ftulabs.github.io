@@ -101,25 +101,7 @@
   // works from any directory depth (root pages, blog/, vi/blog/, etc.)
   // -------------------------------------------------------------------------
 
-  function getSiteRoot() {
-    // Try to derive root from the l10n.js script src
-    var scripts = document.querySelectorAll('script[src*="l10n.js"]');
-    for (var i = 0; i < scripts.length; i++) {
-      var src = scripts[i].getAttribute("src") || "";
-      var idx = src.indexOf("js/l10n.js");
-      if (idx !== -1) {
-        return src.substring(0, idx);
-      }
-    }
-    var depth = location.pathname.replace(/^\//, "").split("/").length - 1;
-    var prefix = "";
-    for (var j = 0; j < depth; j++) {
-      prefix += "../";
-    }
-    return prefix;
-  }
-
-  var SITE_ROOT = getSiteRoot();
+  var SITE_ROOT = "/";
 
   function manifestUrl() {
     return SITE_ROOT + "l10n/manifest.json";

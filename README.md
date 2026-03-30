@@ -264,15 +264,14 @@ Blog posts use [Highlight.js](https://highlightjs.org/) (loaded via CDN) for aut
 Add the Highlight.js theme in `<head>`, **before** `style.css` (so the site's overrides win):
 
 ```html
-<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css">
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="/vendor/hljs/atom-one-dark.min.css">
+<link rel="stylesheet" href="/css/style.css">
 ```
 
 Add the loader script before `</body>`, after `main.js`:
 
 ```html
-<script src="../js/hljs.js"></script>
+<script src="/js/hljs.js"></script>
 ```
 
 The theme (`atom-one-dark`) provides the standard syntax colors. The site's `css/style.css` loads after it and overrides only the code block background to match the site theme. The script (`js/hljs.js`) fetches the Highlight.js core from the CDN, loads the extra language modules (LaTeX, Dockerfile, INI), calls `hljs.highlightAll()`, and injects a **copy button** into every `<pre>` block automatically.
@@ -369,15 +368,15 @@ Open `research.html` and add a new `<div class="paper reveal">` block inside the
 
 ### Add Images
 
-Place image files in an `assets/` or `images/` folder (create it if needed). Images inside `<article class="post-content">` are automatically styled (full-width, bordered). Use standard HTML:
+Place image files in the `/img/` folder. Images inside `<article class="post-content">` are automatically styled (full-width, bordered). Use root-relative paths so they work at any directory depth:
 
 ```html
 <!-- Basic image -->
-<img src="../assets/my-diagram.png" alt="Description of the image">
+<img src="/img/my-diagram.png" alt="Description of the image">
 
 <!-- Image with caption -->
 <figure>
-  <img src="../assets/results-chart.png" alt="Benchmark results">
+  <img src="/img/results-chart.png" alt="Benchmark results">
   <figcaption>Figure 1: Inference latency comparison across sequence lengths.</figcaption>
 </figure>
 ```
@@ -435,10 +434,11 @@ Supported formats: `.mp3`, `.ogg`, `.wav`. For podcast-style content, consider h
 
 ### Media Guidelines
 
-- **File organization:** Store media files in an `assets/` folder at the root. For blog-specific media, use `blog/assets/` or `assets/blog/`.
+- **File organization:** Store media files in the `/img/` folder at the root.
 - **File size:** Keep the repo lean. Avoid committing files larger than 10 MB. Use external hosting (YouTube, Vimeo, cloud storage) for large media.
 - **Alt text:** Always include descriptive `alt` attributes on `<img>` tags for accessibility.
 - **Responsive:** Images and videos use `max-width: 100%` by default and scale to fit their container.
+- **Path style:** Use **Root-Relative Paths** (starting with `/`) for all assets so they load correctly from any subfolder (e.g. `/img/logo.png`).
 
 ## Localization (l10n)
 
@@ -474,13 +474,19 @@ The site supports multiple languages. English (`en`) is the default; translated 
 
 3. **Edit the translated file:**
    - Change `<html lang="en">` to `<html lang="vi">` (or the appropriate BCP-47 tag).
-   - **Adjust relative paths** — the file is one level deeper, so `../` becomes `../../`:
+   - **Use Root-Relative Paths for Engine Assets** — All JS, CSS, Vendor, and Img assets MUST start with a `/`. These do **not** change when you move files to a subfolder:
+     ```html
+     <link rel="stylesheet" href="/css/style.css">
+     <script src="/js/main.js"></script>
+     <img src="/img/logo.png">
      ```
-     ../css/style.css   →  ../../css/style.css
-     ../js/main.js      →  ../../js/main.js
-     ../js/l10n.js      →  ../../js/l10n.js
-     ../img/logo.png    →  ../../img/logo.png
-     ../blog.html       →  ../../blog.html
+   - **Maintain Folder-Aware Navigation for Content** — Page-to-page links (like "Home" or "Blog") should remain **relative** so the user stays within the same language directory:
+     ```html
+     <!-- In vi/blog/4.html, this stays in Vietnamese -->
+     <a href="../index.html">Home</a> 
+     
+     <!-- This would jump back to English root — avoid! -->
+     <a href="/index.html">Home</a> 
      ```
    - Translate all user-facing text (title, headings, paragraphs, lists, blockquotes).
    - **Do NOT translate** code blocks, terminal commands, URLs, or technical terms commonly used in English (e.g. Git, commit, branch, IDE, CUDA).

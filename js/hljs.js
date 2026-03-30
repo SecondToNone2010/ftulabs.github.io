@@ -1,5 +1,5 @@
 (function () {
-  var CDN = "../vendor/hljs/";
+  var CDN = "/vendor/hljs/";
   var LANGUAGES = [
     "languages/latex.min.js",
     "languages/dockerfile.min.js",

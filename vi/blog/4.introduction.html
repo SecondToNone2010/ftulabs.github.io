@@ -1,38 +1,37 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cẩm nang sinh tồn cho sinh viên CNTT tại FTU — FTU Labs</title>
+        <title>Survival Guide for CS Students in FTU — FTU Labs</title>
         <meta
             name="description"
-            content="Những điều sinh viên CNTT tại FTU cần biết — từ cài đặt IDE đến triển khai dự án hoàn chỉnh."
+            content="What CS students in FTU need to know about — from IDE setup to end-to-end project delivery."
         />
-        <link rel="icon" href="../../img/logo.png" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.css"
-        />
+        <link rel="icon" href="/img/logo.png" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
         <link
             href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="/vendor/hljs/atom-one-dark.min.css" />
+        <link rel="stylesheet" href="/css/style.css" />
     </head>
     <body>
         <nav class="nav">
             <div class="nav-inner">
-                <a href="../../index.html" class="nav-logo"
-                    ><img src="../../img/logo.png" alt="FTU" />FTU Labs</a
+                <a href="../index.html" class="nav-logo"
+                    ><img src="/img/logo.png" alt="FTU" />FTU Labs</a
                 >
                 <div class="nav-actions">
                     <div class="nav-links">
-                        <a href="../../projects.html">projects</a>
-                        <a href="../../team.html">team</a>
-                        <a href="../../research.html">research</a>
-                        <a href="../../blog.html">blog</a>
+                        <a href="../projects.html">projects</a>
+                        <a href="../team.html">team</a>
+                        <a href="../research.html">research</a>
+                        <a href="../blog.html">blog</a>
                     </div>
                     <div class="lang-switch" aria-label="Language"></div>
                     <button class="theme-toggle" aria-label="Toggle theme">
@@ -60,55 +59,54 @@
             </div>
         </nav>
         <div class="nav-mobile">
-            <a href="../../projects.html">projects</a>
-            <a href="../../team.html">team</a>
-            <a href="../../research.html">research</a>
-            <a href="../../blog.html">blog</a>
+            <a href="../projects.html">projects</a>
+            <a href="../team.html">team</a>
+            <a href="../research.html">research</a>
+            <a href="../blog.html">blog</a>
         </div>
 
         <main class="page">
             <div class="container">
-                <a href="../../blog.html" class="post-back animate"
-                    >&larr; quay lại blog</a
+                <a href="../blog.html" class="post-back animate"
+                    >&larr; back to blog</a
                 >
 
                 <header class="post-header animate animate-d1">
                     <h1 class="post-title">
-                        Cẩm nang sinh tồn cho sinh viên CNTT tại FTU
+                        Survival Guide for CS Students in FTU
                     </h1>
                     <div class="post-meta">
-                        2026-03-28 &middot; FTU Labs &middot; 20 phút đọc
+                        2026-03-28 &middot; FTU Labs &middot; 20 min read
                     </div>
                 </header>
 
                 <article class="post-content animate animate-d2">
                     <p>
-                        Bài viết này bao gồm những kỹ năng thiết yếu mà mọi sinh
-                        viên CNTT tại FTU nên học &mdash; từ cài đặt IDE đầu
-                        tiên đến triển khai một dự án hoàn chỉnh. Mỗi phần ngắn
-                        gọn, thực tế và đầy đủ tài liệu tham khảo. Hãy lưu trang
-                        này lại và quay lại khi bạn cần.
+                        This guide covers the essential skills every CS student
+                        at FTU should learn &mdash; from setting up your first
+                        IDE to shipping an end-to-end project. Each section is
+                        short, practical, and packed with resources. Bookmark
+                        this page and revisit it as you progress.
                     </p>
 
                     <!-- ============================================ -->
                     <!-- 1. IDE SETUP -->
                     <!-- ============================================ -->
-                    <h2>1. Cài đặt IDE</h2>
+                    <h2>1. Setting Up Your IDE</h2>
                     <p>
-                        <strong>VS Code</strong> là trình soạn thảo được khuyên
-                        dùng. Miễn phí, nhiều extension, và chạy trên mọi hệ
-                        điều hành.
+                        <strong>VS Code</strong> is the recommended editor. It's
+                        free, extensible, and works on every OS.
                     </p>
 
-                    <pre><code># Install VS Code (Ubuntu/Debian)
+                    <pre><code class="language-bash"># Install VS Code (Ubuntu/Debian)
 sudo apt update && sudo apt install code
 
 # macOS (via Homebrew)
 brew install --cask visual-studio-code</code></pre>
 
                     <p>
-                        <strong>Các extension cần thiết</strong> &mdash; cài từ
-                        thanh Extensions (<code>Ctrl+Shift+X</code>):
+                        <strong>Essential extensions</strong> &mdash; install
+                        from the Extensions sidebar (<code>Ctrl+Shift+X</code>):
                     </p>
                     <ul>
                         <li>
@@ -116,36 +114,35 @@ brew install --cask visual-studio-code</code></pre>
                             linting, debugging
                         </li>
                         <li>
-                            <strong>Pylance</strong> &mdash; kiểm tra kiểu dữ
-                            liệu nhanh
+                            <strong>Pylance</strong> &mdash; fast type checking
                         </li>
                         <li>
-                            <strong>GitLens</strong> &mdash; xem git blame và
-                            lịch sử ngay trong code
+                            <strong>GitLens</strong> &mdash; inline git blame
+                            and history
                         </li>
                         <li>
-                            <strong>Prettier</strong> &mdash; tự động format
+                            <strong>Prettier</strong> &mdash; auto-format
                             HTML/CSS/JS
                         </li>
                         <li>
-                            <strong>Remote - SSH</strong> &mdash; chỉnh sửa file
-                            trên server từ xa
+                            <strong>Remote - SSH</strong> &mdash; edit files on
+                            remote servers
                         </li>
                         <li>
-                            <strong>Live Server</strong> &mdash; hot-reload cho
-                            dự án HTML/CSS
+                            <strong>Live Server</strong> &mdash; hot-reload for
+                            HTML/CSS projects
                         </li>
                     </ul>
 
-                    <p><strong>Phím tắt hữu ích</strong>:</p>
-                    <pre><code>Ctrl+P           # Quick file open
+                    <p><strong>Useful shortcuts</strong>:</p>
+                    <pre><code class="language-plaintext">Ctrl+P           # Quick file open
 Ctrl+Shift+P     # Command palette
 Ctrl+`            # Toggle terminal
 Ctrl+D            # Select next occurrence
 Alt+Up/Down       # Move line up/down
 Ctrl+Shift+K      # Delete line</code></pre>
 
-                    <p><strong>Tài liệu tham khảo</strong>:</p>
+                    <p><strong>Resources</strong>:</p>
                     <ul>
                         <li>
                             <a
@@ -164,14 +161,14 @@ Ctrl+Shift+K      # Delete line</code></pre>
                     <!-- ============================================ -->
                     <!-- 2. VIRTUAL ENVIRONMENTS -->
                     <!-- ============================================ -->
-                    <h2>2. Môi trường ảo</h2>
+                    <h2>2. Virtual Environments</h2>
                     <p>
-                        Đừng bao giờ cài package toàn cục. Hãy dùng virtual
-                        environment để cô lập dependency cho từng dự án.
+                        Never install packages globally. Use virtual
+                        environments to isolate dependencies per project.
                     </p>
 
-                    <h3>Lựa chọn A: venv (có sẵn)</h3>
-                    <pre><code># Create
+                    <h3>Option A: venv (built-in)</h3>
+                    <pre><code class="language-bash"># Create
 python -m venv .venv
 
 # Activate
@@ -190,8 +187,8 @@ pip install -r requirements.txt
 # Deactivate
 deactivate</code></pre>
 
-                    <h3>Lựa chọn B: conda (cho data science / CUDA)</h3>
-                    <pre><code># Install Miniconda (lightweight)
+                    <h3>Option B: conda (for data science / CUDA)</h3>
+                    <pre><code class="language-bash"># Install Miniconda (lightweight)
 # https://docs.conda.io/en/latest/miniconda.html
 
 # Create environment
@@ -207,8 +204,8 @@ conda env export > environment.yml
 # Reproduce
 conda env create -f environment.yml</code></pre>
 
-                    <h3>Lựa chọn C: uv (nhanh, hiện đại)</h3>
-                    <pre><code># Install uv
+                    <h3>Option C: uv (fast, modern)</h3>
+                    <pre><code class="language-bash"># Install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Create project with virtual env
@@ -222,12 +219,13 @@ uv add numpy pandas torch
 uv sync</code></pre>
 
                     <blockquote>
-                        Nguyên tắc chung: dùng <strong>venv</strong> cho dự án
-                        đơn giản, <strong>conda</strong> khi cần CUDA/thư viện
-                        hệ thống, và <strong>uv</strong> khi bạn muốn tốc độ.
+                        Rule of thumb: use <strong>venv</strong> for simple
+                        projects, <strong>conda</strong> when you need
+                        CUDA/system libs, and <strong>uv</strong> when you want
+                        speed.
                     </blockquote>
 
-                    <p><strong>Tài liệu tham khảo</strong>:</p>
+                    <p><strong>Resources</strong>:</p>
                     <ul>
                         <li>
                             <a
@@ -252,10 +250,10 @@ uv sync</code></pre>
                     <!-- ============================================ -->
                     <!-- 3. GITHUB, CLEAN CODE, CONTRIBUTING -->
                     <!-- ============================================ -->
-                    <h2>3. GitHub, Code sạch &amp; Đóng góp</h2>
+                    <h2>3. GitHub, Clean Code &amp; Contributing</h2>
 
-                    <h3>3.1 Tạo GitHub Personal Access Token</h3>
-                    <pre><code># Go to: GitHub &rarr; Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Fine-grained tokens
+                    <h3>3.1 Create a GitHub Personal Access Token</h3>
+                    <pre><code class="language-bash"># Go to: GitHub &rarr; Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Fine-grained tokens
 # Select permissions: Contents (read/write), Pull requests (read/write)
 # Copy the token
 
@@ -271,8 +269,8 @@ ssh-keygen -t ed25519 -C "you@example.com"
 cat ~/.ssh/id_ed25519.pub
 # Add the public key at: GitHub &rarr; Settings &rarr; SSH keys</code></pre>
 
-                    <h3>3.2 Quy trình Git cơ bản</h3>
-                    <pre><code># Start from latest main
+                    <h3>3.2 Git workflow basics</h3>
+                    <pre><code class="language-bash"># Start from latest main
 git checkout main && git pull
 
 # Create feature branch
@@ -286,8 +284,8 @@ git commit -m "Add login page with form validation"
 git push -u origin feature/add-login-page
 gh pr create --title "Add login page" --body "Implements #12"</code></pre>
 
-                    <h3>3.3 Viết code sạch</h3>
-                    <pre><code># BAD &mdash; no context, magic numbers, no types
+                    <h3>3.3 Writing clean code</h3>
+                    <pre><code class="language-python"># BAD &mdash; no context, magic numbers, no types
 def calc(x):
     return x * 1.1
 
@@ -296,59 +294,57 @@ def calculate_price_with_tax(base_price: float, tax_rate: float = 0.1) -> float:
     """Return the total price including tax."""
     return base_price * (1 + tax_rate)</code></pre>
 
-                    <p><strong>Nguyên tắc viết comment</strong>:</p>
+                    <p><strong>Comment rules</strong>:</p>
                     <ul>
                         <li>
-                            Comment <em>tại sao</em>, không phải
-                            <em>cái gì</em>. Code cho biết nó làm gì; comment
-                            giải thích mục đích.
+                            Comment <em>why</em>, not <em>what</em>. The code
+                            tells you what; comments explain intent.
                         </li>
                         <li>
-                            Dùng docstring cho hàm public. Hạn chế comment
-                            inline.
+                            Use docstrings for public functions. Use inline
+                            comments sparingly.
                         </li>
                         <li>
-                            Xoá code bị comment &mdash; đó là việc của git
-                            history.
+                            Delete commented-out code &mdash; that's what git
+                            history is for.
                         </li>
                     </ul>
 
-                    <h3>3.4 Quy trình đóng góp (cho các repo FTU Labs)</h3>
+                    <h3>3.4 Contribution process (for FTU Labs repos)</h3>
                     <ol>
                         <li>
-                            <strong>Fork</strong> repo (hoặc clone nếu bạn có
-                            quyền ghi)
+                            <strong>Fork</strong> the repo (or clone if you have
+                            write access)
                         </li>
                         <li>
-                            <strong>Tạo branch</strong> từ <code>main</code> với
-                            tên mô tả rõ ràng
+                            <strong>Create a branch</strong> from
+                            <code>main</code> with a descriptive name
                         </li>
                         <li>
-                            <strong>Viết code + test</strong> &mdash; theo style
-                            hiện có
+                            <strong>Write code + tests</strong> &mdash; follow
+                            existing style
                         </li>
                         <li>
-                            <strong>Commit</strong> với message rõ ràng (tiền tố
-                            <code>feat:</code>, <code>fix:</code>,
-                            <code>docs:</code>)
+                            <strong>Commit</strong> with clear messages
+                            (<code>feat:</code>, <code>fix:</code>,
+                            <code>docs:</code> prefixes)
                         </li>
                         <li>
-                            <strong>Push</strong> và mở
+                            <strong>Push</strong> and open a
                             <strong>Pull Request</strong>
                         </li>
                         <li>
-                            <strong>Xử lý feedback từ review</strong>, sau đó
-                            merge
+                            <strong>Address review feedback</strong>, then merge
                         </li>
                     </ol>
 
-                    <pre><code># Conventional commit examples
+                    <pre><code class="language-bash"># Conventional commit examples
 git commit -m "feat: add user authentication endpoint"
 git commit -m "fix: resolve race condition in queue worker"
 git commit -m "docs: update API reference for v2 routes"
 git commit -m "refactor: extract validation logic into utils"</code></pre>
 
-                    <p><strong>Tài liệu tham khảo</strong>:</p>
+                    <p><strong>Resources</strong>:</p>
                     <ul>
                         <li>
                             <a
@@ -391,14 +387,14 @@ git commit -m "refactor: extract validation logic into utils"</code></pre>
                     <!-- ============================================ -->
                     <h2>4. LaTeX, Overleaf &amp; arXiv</h2>
 
-                    <h3>4.1 Cơ bản về LaTeX</h3>
+                    <h3>4.1 LaTeX basics</h3>
                     <p>
-                        LaTeX là chuẩn để viết bài báo khoa học. Dùng
-                        <a href="https://www.overleaf.com/">Overleaf</a> để cộng
-                        tác chỉnh sửa (không cần cài đặt trên máy).
+                        LaTeX is the standard for writing academic papers. Use
+                        <a href="https://www.overleaf.com/">Overleaf</a> for
+                        collaborative editing (no local install needed).
                     </p>
 
-                    <pre><code>\documentclass{article}
+                    <pre><code class="language-latex">\documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb, graphicx, hyperref}
 
@@ -433,32 +429,31 @@ A figure:
 \bibliography{references}
 \end{document}</code></pre>
 
-                    <h3>4.2 Mẹo dùng Overleaf</h3>
+                    <h3>4.2 Tips for Overleaf</h3>
                     <ul>
                         <li>
-                            Dùng
+                            Use
                             <strong>Overleaf Git integration</strong> &mdash;
-                            clone dự án Overleaf qua git, chỉnh sửa trên máy,
-                            push lại
+                            clone your Overleaf project via git, edit locally,
+                            push back
                         </li>
                         <li>
-                            Bắt đầu từ <strong>template hội nghị</strong>:
-                            NeurIPS, ICML, ACL, AAAI đều có template trên
-                            Overleaf
+                            Start from <strong>conference templates</strong>:
+                            NeurIPS, ICML, ACL, AAAI all have Overleaf templates
                         </li>
                         <li>
-                            Dùng <code>\input{sections/method.tex}</code> để
-                            chia bài báo dài thành nhiều file
+                            Use <code>\input{sections/method.tex}</code> to
+                            split large papers into files
                         </li>
                         <li>
-                            Quản lý tài liệu tham khảo bằng file
-                            <code>.bib</code> &mdash; export từ Google Scholar
-                            hoặc Semantic Scholar
+                            Manage references with <code>.bib</code> files
+                            &mdash; export from Google Scholar or Semantic
+                            Scholar
                         </li>
                     </ul>
 
-                    <h3>4.3 Nộp bài lên arXiv</h3>
-                    <pre><code># Prepare submission directory
+                    <h3>4.3 Submitting to arXiv</h3>
+                    <pre><code class="language-bash"># Prepare submission directory
 mkdir arxiv_submission && cd arxiv_submission
 
 # Copy source files (not the PDF)
@@ -474,7 +469,7 @@ tar -czf submission.tar.gz *.tex *.bib *.bst figures/
 # Choose category (cs.CL, cs.LG, cs.CV, etc.)
 # arXiv compiles the LaTeX on their servers</code></pre>
 
-                    <p><strong>Tài liệu tham khảo</strong>:</p>
+                    <p><strong>Resources</strong>:</p>
                     <ul>
                         <li>
                             <a
@@ -506,16 +501,15 @@ tar -czf submission.tar.gz *.tex *.bib *.bst figures/
                     <!-- ============================================ -->
                     <!-- 5. PROJECT WEBSITE -->
                     <!-- ============================================ -->
-                    <h2>5. Tạo website cho dự án</h2>
+                    <h2>5. Creating a Project Website</h2>
                     <p>
-                        Mỗi dự án nghiêm túc đều cần một trang giới thiệu.
-                        <strong>GitHub Pages</strong> là cách dễ nhất &mdash;
-                        hosting miễn phí, hỗ trợ domain riêng, tự động deploy
-                        khi push.
+                        Every serious project deserves a landing page.
+                        <strong>GitHub Pages</strong> is the easiest way &mdash;
+                        free hosting, custom domain support, deploys on push.
                     </p>
 
-                    <h3>5.1 HTML tĩnh (đơn giản nhất)</h3>
-                    <pre><code># Create repo: username.github.io or project-name
+                    <h3>5.1 Static HTML (simplest)</h3>
+                    <pre><code class="language-bash"># Create repo: username.github.io or project-name
 mkdir my-project-site && cd my-project-site
 git init
 
@@ -543,30 +537,29 @@ HTML
 
 # Push and enable GitHub Pages in repo Settings &rarr; Pages &rarr; main branch</code></pre>
 
-                    <h3>5.2 Dùng static site generator</h3>
+                    <h3>5.2 Using a static site generator</h3>
                     <ul>
                         <li>
                             <a href="https://docusaurus.io/">Docusaurus</a>
-                            &mdash; phù hợp cho dự án nhiều tài liệu (dựa trên
-                            React)
+                            &mdash; great for docs-heavy projects (React-based)
                         </li>
                         <li>
                             <a href="https://jekyllrb.com/">Jekyll</a> &mdash;
-                            tích hợp sẵn với GitHub Pages, dùng Markdown
+                            GitHub Pages native support, Markdown-based
                         </li>
                         <li>
-                            <a href="https://gohugo.io/">Hugo</a> &mdash; build
-                            nhanh nhất, dựa trên Go
+                            <a href="https://gohugo.io/">Hugo</a> &mdash;
+                            fastest build times, Go-based
                         </li>
                         <li>
                             <a href="https://nerfies.github.io/"
                                 >Nerfies template</a
                             >
-                            &mdash; template trang dự án học thuật phổ biến
+                            &mdash; popular academic project page template
                         </li>
                     </ul>
 
-                    <pre><code># Example: deploy with GitHub Actions (add .github/workflows/deploy.yml)
+                    <pre><code class="language-yaml"># Example: deploy with GitHub Actions (add .github/workflows/deploy.yml)
 name: Deploy
 on:
   push:
@@ -583,7 +576,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build</code></pre>
 
-                    <p><strong>Tài liệu tham khảo</strong>:</p>
+                    <p><strong>Resources</strong>:</p>
                     <ul>
                         <li>
                             <a href="https://pages.github.com/"
@@ -607,14 +600,14 @@ jobs:
                     <!-- ============================================ -->
                     <!-- 6. AI TOOLS IN YOUR IDE -->
                     <!-- ============================================ -->
-                    <h2>6. Công cụ AI &amp; Tăng năng suất</h2>
+                    <h2>6. AI Tools &amp; Productivity Setup</h2>
 
                     <h3>6.1 Google Colab</h3>
                     <p>
-                        Notebook miễn phí với GPU/TPU. Hoàn hảo để thử nghiệm
-                        trước khi cài đặt trên máy.
+                        Free GPU/TPU notebooks. Perfect for experiments before
+                        committing to local setup.
                     </p>
-                    <pre><code># Mount Google Drive in Colab
+                    <pre><code class="language-python"># Mount Google Drive in Colab
 from google.colab import drive
 drive.mount('/content/drive')
 
@@ -624,27 +617,27 @@ drive.mount('/content/drive')
 # Check GPU
 !nvidia-smi</code></pre>
                     <p>
-                        Mẹo hay: dùng <code>Colab Pro</code> để có thời gian
-                        chạy lâu hơn và truy cập A100. Kết nối Colab với local
-                        runtime qua <code>jupyter_http_over_ws</code> cho
-                        workload nặng hơn.
+                        Pro tip: use <code>Colab Pro</code> for longer runtimes
+                        and A100 access. Connect Colab to your local runtime via
+                        <code>jupyter_http_over_ws</code> for heavier workloads.
                     </p>
 
-                    <h3>6.2 Trợ lý lập trình AI</h3>
+                    <h3>6.2 AI coding assistants</h3>
                     <ul>
                         <li>
-                            <strong>GitHub Copilot</strong> &mdash; miễn phí cho
-                            sinh viên qua
+                            <strong>GitHub Copilot</strong> &mdash; free for
+                            students via
                             <a href="https://education.github.com/pack"
                                 >GitHub Student Developer Pack</a
-                            >. Cài extension trên VS Code.
+                            >. Install the VS Code extension.
                         </li>
                         <li>
-                            <strong>Claude Code</strong> &mdash; CLI agent của
-                            Anthropic. Đọc codebase, viết code, chạy lệnh.
+                            <strong>Claude Code</strong> &mdash; Anthropic's CLI
+                            agent. Reads your codebase, writes code, runs
+                            commands.
                         </li>
                     </ul>
-                    <pre><code># Install Claude Code
+                    <pre><code class="language-bash"># Install Claude Code
 npm install -g @anthropic-ai/claude-code
 
 # Run in your project directory
@@ -656,13 +649,13 @@ claude
 > "Refactor this function to use async/await"
 > "Explain what this CUDA kernel does"</code></pre>
 
-                    <h3>6.3 MCP (Model Context Protocol) server</h3>
+                    <h3>6.3 MCP (Model Context Protocol) servers</h3>
                     <p>
-                        MCP cho phép trợ lý AI kết nối với các công cụ bên ngoài
-                        &mdash; database, API, hệ thống file, trình duyệt. Hãy
-                        xem nó như plugin cho AI.
+                        MCP lets AI assistants connect to external tools &mdash;
+                        databases, APIs, file systems, browsers. Think of it as
+                        plugins for AI.
                     </p>
-                    <pre><code>// .claude/settings.json &mdash; example MCP config
+                    <pre><code class="language-json">// .claude/settings.json &mdash; example MCP config
 {
   "mcpServers": {
     "filesystem": {
@@ -677,27 +670,27 @@ claude
   }
 }</code></pre>
 
-                    <h3>6.4 Các công cụ hữu ích khác</h3>
+                    <h3>6.4 Other useful tools</h3>
                     <ul>
                         <li>
-                            <strong>Cursor</strong> &mdash; trình soạn thảo tích
-                            hợp AI (fork VS Code với AI sẵn có)
+                            <strong>Cursor</strong> &mdash; AI-native code
+                            editor (VS Code fork with built-in AI)
                         </li>
                         <li>
-                            <strong>WandB</strong> &mdash; theo dõi thí nghiệm
-                            ML (<code>pip install wandb</code>)
+                            <strong>WandB</strong> &mdash; experiment tracking
+                            for ML (<code>pip install wandb</code>)
                         </li>
                         <li>
-                            <strong>DVC</strong> &mdash; quản lý phiên bản cho
-                            dữ liệu và model (<code>pip install dvc</code>)
+                            <strong>DVC</strong> &mdash; version control for
+                            data and models (<code>pip install dvc</code>)
                         </li>
                         <li>
-                            <strong>pre-commit</strong> &mdash; tự động format
-                            và lint mỗi lần commit
+                            <strong>pre-commit</strong> &mdash; auto-format and
+                            lint on every commit
                         </li>
                     </ul>
 
-                    <pre><code># Setup pre-commit hooks
+                    <pre><code class="language-yaml"># Setup pre-commit hooks
 pip install pre-commit
 
 # .pre-commit-config.yaml
@@ -714,7 +707,7 @@ repos:
 # Install hooks
 pre-commit install</code></pre>
 
-                    <p><strong>Tài liệu tham khảo</strong>:</p>
+                    <p><strong>Resources</strong>:</p>
                     <ul>
                         <li>
                             <a href="https://colab.research.google.com/"
@@ -748,47 +741,47 @@ pre-commit install</code></pre>
                     <!-- ============================================ -->
                     <!-- 7. SYSTEM DESIGN -->
                     <!-- ============================================ -->
-                    <h2>7. Học System Design</h2>
+                    <h2>7. Learning System Design</h2>
                     <p>
-                        System design là kỹ năng thiết kế phần mềm có khả năng
-                        mở rộng. Kể cả khi bạn không đi phỏng vấn, hiểu những
-                        pattern này sẽ giúp bạn trở thành kỹ sư giỏi hơn.
+                        System design is the skill of architecting software that
+                        scales. Even if you're not interviewing, understanding
+                        these patterns makes you a better engineer.
                     </p>
 
-                    <h3>7.1 Các khái niệm cốt lõi (theo thứ tự)</h3>
+                    <h3>7.1 Core concepts to learn (in order)</h3>
                     <ol>
                         <li>
-                            <strong>Mô hình Client-Server</strong> &mdash; HTTP,
-                            REST API, chu trình request/response
+                            <strong>Client-Server model</strong> &mdash; HTTP,
+                            REST APIs, request/response cycle
                         </li>
                         <li>
-                            <strong>Database</strong> &mdash; SQL vs NoSQL,
+                            <strong>Databases</strong> &mdash; SQL vs NoSQL,
                             indexing, replication, sharding
                         </li>
                         <li>
-                            <strong>Caching</strong> &mdash; Redis, CDN, chiến
-                            lược cache invalidation
+                            <strong>Caching</strong> &mdash; Redis, CDNs, cache
+                            invalidation strategies
                         </li>
                         <li>
                             <strong>Load balancing</strong> &mdash; round-robin,
-                            consistent hashing, health check
+                            consistent hashing, health checks
                         </li>
                         <li>
-                            <strong>Message queue</strong> &mdash; Kafka,
-                            RabbitMQ, pattern pub/sub
+                            <strong>Message queues</strong> &mdash; Kafka,
+                            RabbitMQ, pub/sub patterns
                         </li>
                         <li>
                             <strong>Microservices vs monolith</strong> &mdash;
-                            đánh đổi, khi nào nên tách
+                            trade-offs, when to split
                         </li>
                         <li>
-                            <strong>Định lý CAP</strong> &mdash; consistency,
+                            <strong>CAP theorem</strong> &mdash; consistency,
                             availability, partition tolerance
                         </li>
                     </ol>
 
-                    <h3>7.2 Cách luyện tập</h3>
-                    <pre><code># For each system design problem, follow this framework:
+                    <h3>7.2 Practice pattern</h3>
+                    <pre><code class="language-plaintext"># For each system design problem, follow this framework:
 
 1. REQUIREMENTS     &rarr; What does the system do? (functional + non-functional)
 2. ESTIMATION       &rarr; How much data? How many users? QPS?
@@ -802,7 +795,7 @@ pre-commit install</code></pre>
 - Components: API gateway &rarr; shortening service &rarr; DB (key-value)
 - Key decision: base62 encoding vs hash, read-heavy = cache layer</code></pre>
 
-                    <p><strong>Tài liệu tham khảo</strong>:</p>
+                    <p><strong>Resources</strong>:</p>
                     <ul>
                         <li>
                             <a
@@ -829,26 +822,26 @@ pre-commit install</code></pre>
                             >
                         </li>
                         <li>
-                            Sách:
-                            <em>Designing Data-Intensive Applications</em> của
+                            Book:
+                            <em>Designing Data-Intensive Applications</em> by
                             Martin Kleppmann
                         </li>
                         <li>
-                            Sách: <em>System Design Interview</em> của Alex Xu
+                            Book: <em>System Design Interview</em> by Alex Xu
                         </li>
                     </ul>
 
                     <!-- ============================================ -->
                     <!-- 8. END-TO-END PROJECT -->
                     <!-- ============================================ -->
-                    <h2>8. Dự án End-to-End: Từ ý tưởng đến CI/CD</h2>
+                    <h2>8. End-to-End Project: From Concept to CI/CD</h2>
                     <p>
-                        Đây là nơi mọi thứ kết hợp lại. Sau đây là vòng đời đầy
-                        đủ của một dự án thực tế.
+                        This is where everything comes together. Here's the full
+                        lifecycle of a real project.
                     </p>
 
-                    <h3>Giai đoạn 1: Ý tưởng &amp; Lên kế hoạch</h3>
-                    <pre><code># Define the problem
+                    <h3>Phase 1: Concept &amp; Planning</h3>
+                    <pre><code class="language-plaintext"># Define the problem
 - What problem are you solving?
 - Who is the user?
 - What exists already? (literature review / competitor analysis)
@@ -876,8 +869,8 @@ my-project/
 │       └── ci.yml
 └── .gitignore</code></pre>
 
-                    <h3>Giai đoạn 2: Thiết kế hệ thống</h3>
-                    <pre><code># Draw your architecture (use draw.io, Excalidraw, or Mermaid)
+                    <h3>Phase 2: System Design</h3>
+                    <pre><code class="language-plaintext"># Draw your architecture (use draw.io, Excalidraw, or Mermaid)
 
 # Example: ML inference service
 ┌─────────┐     ┌───────────┐     ┌──────────┐
@@ -897,8 +890,8 @@ my-project/
 }
 # Response: { "label": "positive", "confidence": 0.94 }</code></pre>
 
-                    <h3>Giai đoạn 3: Triển khai code</h3>
-                    <pre><code># Use branches for each feature
+                    <h3>Phase 3: Implementation</h3>
+                    <pre><code class="language-python"># Use branches for each feature
 git checkout -b feat/model-inference
 
 # Write tests FIRST (or alongside)
@@ -911,8 +904,8 @@ def test_predict_returns_label():
 # Run tests locally before pushing
 pytest tests/ -v</code></pre>
 
-                    <h3>Giai đoạn 4: Pipeline CI/CD</h3>
-                    <pre><code># .github/workflows/ci.yml
+                    <h3>Phase 4: CI/CD Pipeline</h3>
+                    <pre><code class="language-yaml"># .github/workflows/ci.yml
 name: CI
 on: [push, pull_request]
 
@@ -939,8 +932,8 @@ jobs:
           echo "Deploy step here"
           # e.g., docker build, push to registry, deploy to cloud</code></pre>
 
-                    <h3>Giai đoạn 5: Tài liệu &amp; Phát hành</h3>
-                    <pre><code># Write a proper README
+                    <h3>Phase 5: Documentation &amp; Release</h3>
+                    <pre><code class="language-markdown"># Write a proper README
 ## Project Name
 One-line description.
 
@@ -966,20 +959,19 @@ my-project --input "hello"
 }
 ```</code></pre>
 
-                    <h3>Quy trình hoàn chỉnh</h3>
-                    <pre><code>Idea &rarr; One-pager &rarr; System Design &rarr; Repo Setup
+                    <h3>The complete flow</h3>
+                    <pre><code class="language-plaintext">Idea &rarr; One-pager &rarr; System Design &rarr; Repo Setup
   &rarr; Branch + Code + Tests &rarr; PR + Review &rarr; CI passes
   &rarr; Merge to main &rarr; Auto-deploy &rarr; Write paper
   &rarr; Project website &rarr; Push to arXiv &rarr; Share</code></pre>
 
                     <blockquote>
-                        Khoảng cách giữa một dự án sinh viên và một dự án chuyên
-                        nghiệp không phải là tài năng &mdash; mà là quy trình.
-                        Thực hiện nhất quán các bước này và bạn sẽ xây dựng được
-                        những thứ bền vững.
+                        The gap between a student project and a professional one
+                        isn't talent &mdash; it's process. Follow these steps
+                        consistently and you'll build things that last.
                     </blockquote>
 
-                    <p><strong>Tài liệu tham khảo</strong>:</p>
+                    <p><strong>Resources</strong>:</p>
                     <ul>
                         <li>
                             <a href="https://docs.github.com/en/actions"
@@ -1017,22 +1009,22 @@ my-project --input "hello"
 
                     <hr />
 
-                    <h2>TL;DR &mdash; Lộ trình học tập</h2>
+                    <h2>TL;DR &mdash; Your Learning Path</h2>
                     <ol>
-                        <li>Cài đặt VS Code + extension</li>
+                        <li>Set up VS Code + extensions</li>
                         <li>
-                            Học virtual environment (chọn một, thành thạo nó)
+                            Learn virtual environments (pick one, master it)
                         </li>
-                        <li>Làm quen với Git + GitHub + Pull Request</li>
-                        <li>Viết tài liệu LaTeX đầu tiên trên Overleaf</li>
-                        <li>Deploy trang dự án trên GitHub Pages</li>
-                        <li>Cài công cụ AI (Copilot, Claude Code)</li>
-                        <li>Nghiên cứu một bài system design mỗi tuần</li>
-                        <li>Xây dựng một dự án end-to-end mỗi học kỳ</li>
+                        <li>Get comfortable with Git + GitHub + PRs</li>
+                        <li>Write your first LaTeX doc on Overleaf</li>
+                        <li>Deploy a project page on GitHub Pages</li>
+                        <li>Install AI tools (Copilot, Claude Code)</li>
+                        <li>Study one system design problem per week</li>
+                        <li>Build one end-to-end project each semester</li>
                     </ol>
                     <p>
-                        Bắt đầu từ bước 1 và tiến dần xuống. Mỗi kỹ năng đều
-                        tích luỹ từ kỹ năng trước đó. Chúc bạn thành công.
+                        Start from step 1 and work your way down. Each skill
+                        compounds on the previous one. Good luck.
                     </p>
                 </article>
             </div>
@@ -1048,7 +1040,8 @@ my-project --input "hello"
             </div>
         </footer>
 
-        <script src="../../js/main.js"></script>
-        <script src="../../js/l10n.js"></script>
+        <script src="/js/main.js" defer></script>
+        <script src="/js/hljs.js" defer></script>
+        <script src="/js/l10n.js"></script>
     </body>
 </html>
