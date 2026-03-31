@@ -52,7 +52,7 @@ cd ftulabs.github.io
 # 2. Preview locally
 python3 -m http.server 8000        # then open http://localhost:8000
 
-# 3. Write a blog post in Markdown
+# 3. Write a blog post in Markdown (see blog/post-template.md for an example)
 python3 scripts/md2post.py blog/my-post.md
 
 # 4. Commit and push
@@ -326,6 +326,10 @@ See `blog/post-template.md` for a full working example.
 #### 3. Run the converter
 
 ```bash
+# Try it with the example file first:
+python3 scripts/md2post.py blog/post-template.md --dry-run
+
+# Then convert your own post:
 python3 scripts/md2post.py blog/my-post.md
 ```
 
