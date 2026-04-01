@@ -102,9 +102,9 @@ ftulabs.github.io/
 │   └── manifest.json           # Maps pages → available translations
 │
 ├── scripts/
+│   ├── cachebust.sh            # Asset version stamper (content-hash)
 │   ├── md2post.py              # Markdown → blog post converter
 │   └── update_vendor.py        # Vendor library updater
-├── cachebust.sh                # Asset version stamper (content-hash)
 │
 └── .github/workflows/
     ├── cachebust.yml           # Auto-stamps CSS/JS versions on push
@@ -700,7 +700,7 @@ Options:
 
 When CSS or JS files are updated, returning visitors may see stale cached versions. The site uses **per-file content hashes** appended as query strings (e.g. `style.css?v=a141b4e6`) to bust caches without affecting load time.
 
-**This is fully automated.** On every push to `main`, the GitHub Actions workflow (`.github/workflows/cachebust.yml`) runs `cachebust.sh`, which:
+**This is fully automated.** On every push to `main`, the GitHub Actions workflow (`.github/workflows/cachebust.yml`) runs `scripts/cachebust.sh`, which:
 
 1. Finds all local CSS/JS references across every HTML file
 2. Computes a content hash for each asset using `git hash-object`
@@ -712,7 +712,7 @@ When CSS or JS files are updated, returning visitors may see stale cached versio
 To run it manually (optional):
 
 ```bash
-./cachebust.sh
+./scripts/cachebust.sh
 ```
 
 The script is idempotent — running it twice without changing assets produces zero diff. It uses `git hash-object` instead of `md5sum` for cross-platform compatibility (Linux, macOS, Windows Git Bash).

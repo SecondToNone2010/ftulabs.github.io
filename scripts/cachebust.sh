@@ -19,7 +19,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-cd "$SCRIPT_DIR"
+cd "$SCRIPT_DIR/.."
 
 # Collect unique local asset paths referenced across all HTML files.
 # Matches patterns like ="/css/style.css" or ="/js/main.js?v=old"
