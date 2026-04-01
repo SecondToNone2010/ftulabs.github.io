@@ -321,7 +321,7 @@ All standard Markdown features are supported:
 | `| table |`                        | Table (with alignment)            |
 | Raw HTML                           | Passed through unchanged          |
 
-See `blog/post-template.md` for a full working example.
+See [`blog/post-template.md`](blog/post-template.md) for a full working example.
 
 #### 3. Run the converter
 
